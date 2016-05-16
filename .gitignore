@@ -1,5 +1,6 @@
 *.pyc
 war3files/settings.py
 war3files/wsgi.py
+media/icons/*
 */migrations/*
 */__pycache__/*
