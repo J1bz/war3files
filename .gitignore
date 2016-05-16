@@ -1,0 +1,5 @@
+*.pyc
+war3files/settings.py
+war3files/wsgi.py
+*/migrations/*
+*/__pycache__/*

@@ -1,0 +1,27 @@
+"""
+WSGI config for war3files project.
+
+It exposes the WSGI callable as a module-level variable named ``application``.
+
+For more information on this file, see
+https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/
+"""
+
+from os import environ
+from os.path import expanduser
+from sys import path
+from site import addsitedir
+
+addsitedir('/PATH/TO/war3files/venv_war3files/lib/python3.4/site-packages')
+
+path.append('/PATH/TO/war3files/www')
+path.append('/PATH/TO/war3files/www/war3files')
+
+activate_env = expanduser('/PATH/TO/venv_war3files/bin/activate_this.py')
+exec(compile(open(activate_env, 'rb').read(), activate_env, 'exec'),
+     dict(__file__=activate_env))
+
+from django.core.wsgi import get_wsgi_application  # NOQA
+
+environ.setdefault("DJANGO_SETTINGS_MODULE", "war3files.settings")
+application = get_wsgi_application()
