@@ -19,7 +19,7 @@ class RaceForm(ModelForm):
 class Unit(Model):
     name = CharField(max_length=64)
     race = ForeignKey(Race)
-    icon = ImageField(upload_to='icons')
+    icon = ImageField(upload_to='icons', null=True, blank=True)
     building = BooleanField(default=False)
     heroic = BooleanField(default=False)
 
