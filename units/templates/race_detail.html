@@ -1,7 +1,7 @@
 {% include "header.html" %}
 {% block content %}
   <div class="container">
-    <h1>{{ object }}</h1>
+    <h1><img src="/media/{{ object.icon }}" height="64px" width="64px" /> {{ object }}</h1>
     <ul class="list-group">
       {% for unit in object.unit_set.all %}
         <a href="/unit/{{ unit.pk }}/">

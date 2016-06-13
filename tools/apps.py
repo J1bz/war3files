@@ -4,9 +4,14 @@ from django.apps import AppConfig
 class ToolsConfig(AppConfig):
     name = 'tools'
 
+RACE_ICONS = {
+    'Human': 'UI/Glues/Loading/Backgrounds/Campaigns/HumanSymbol.blp',
+    'Orc': 'UI/Glues/Loading/Backgrounds/Campaigns/OrcSymbol.blp',
+    'NightElf': 'UI/Glues/Loading/Backgrounds/Campaigns/NightElfSymbol.blp',
+    'Undead': 'UI/Glues/Loading/Backgrounds/Campaigns/UndeadSymbol.blp',
+}
 
 REPLACEABLE_ICONS_PATH = 'ReplaceableTextures/CommandButtons'
-
 
 REPLACEABLE_EQUIVALENCE = {
     'ElfVillagerWoman': 'FemaleElfVillager',

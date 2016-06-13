@@ -1,10 +1,14 @@
 {% include "header.html" %}
 {% block content %}
   <div class="container">
-    <h1>Races</h1>
+    <h1><img src="/static/img/roc.png" height="64px" />Races</h1>
     <ul class="list-group">
       {% for race in object_list %}
-        <li class="list-group-item"><a href="race/{{ race.pk }}/">{{ race }}</a></li>
+        <a href="race/{{ race.pk }}/">
+          <li class="list-group-item">
+            <img src="/media/{{ race.icon }}" height="64px" width="64px" /> {{ race }}
+          </li>
+        </a>
       {% endfor %}
     </ul>
   </div>

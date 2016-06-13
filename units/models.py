@@ -5,6 +5,7 @@ from django.forms import ModelForm
 
 class Race(Model):
     name = CharField(max_length=32)
+    icon = ImageField(upload_to='race_icons', null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -13,7 +14,7 @@ class Race(Model):
 class RaceForm(ModelForm):
     class Meta:
         model = Race
-        fields = ('name',)
+        fields = ('name', 'icon',)
 
 
 class Unit(Model):

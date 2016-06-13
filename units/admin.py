@@ -5,8 +5,12 @@ from units.models import Race, RaceForm, Unit, UnitForm
 
 class RaceAdmin(admin.ModelAdmin):
     form = RaceForm
-    list_display = ('name',)
+    list_display = ('show_icon', 'name',)
     search_fields = ('name',)
+
+    def show_icon(self, obj):
+        return format_html("<img src='{0}' alt='{0}'>".
+                           format(obj.icon.url, obj.icon.name))
 
 
 class UnitAdmin(admin.ModelAdmin):

@@ -4,7 +4,8 @@ from os.path import join, isfile, isdir, basename, dirname
 from django.core.management.base import BaseCommand
 from django.core.files import File
 
-from tools.apps import REPLACEABLE_EQUIVALENCE, REPLACEABLE_ICONS_PATH
+from tools.apps import (
+    REPLACEABLE_EQUIVALENCE, REPLACEABLE_ICONS_PATH, RACE_ICONS)
 from tools.utils import cmd
 from units.models import Race, Unit
 from sounds.models import Sound
@@ -25,7 +26,10 @@ class Command(BaseCommand):
             if not isdir(race_root):
                 continue
 
-            self.handle_race(race)
+            race_icon_file = RACE_ICONS.get(
+                race, 'ReplaceableTextures/CommandButtons/BTNSelectHeroOn.blp')
+            race_icon_path = join(options['root'], race_icon_file)
+            self.handle_race(race, race_icon_path)
 
             for unit in listdir(race_root):
                 unit_root = join(race_root, unit)
@@ -67,10 +71,18 @@ class Command(BaseCommand):
 
                     self.handle_sound(race, unit, sound_path)
 
-    def handle_race(self, race):
-        r, created = Race.objects.get_or_create(
-            name=race,
-        )
+    def handle_race(self, race, icon):
+        icon_dir = dirname(icon)
+        cmd('BLPConverter', '--format', 'png', '--dest', icon_dir, icon)
+
+        png_icon = icon[:-4] + '.png'
+
+        with open(png_icon, 'rb') as fh:
+            i = File(fh)
+            Race.objects.get_or_create(
+                name=race,
+                icon=i,
+            )
 
     def beautiful_name(self, name):
         beautiful_name = name[0]
@@ -91,7 +103,7 @@ class Command(BaseCommand):
         r = Race.objects.get(name=race)
         with open(png_icon, 'rb') as fh:
             i = File(fh)
-            Unit.objects.create(
+            Unit.objects.get_or_create(
                 name=self.beautiful_name(unit),
                 race=r,
                 icon=i,
@@ -105,7 +117,7 @@ class Command(BaseCommand):
 
         with open(sound, 'rb') as fh:
             s = File(fh)
-            Sound.objects.create(
+            Sound.objects.get_or_create(
                 name=sound_name,
                 unit=u,
                 audio=s,
