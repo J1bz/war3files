@@ -4,7 +4,7 @@ from django.forms import ModelForm
 
 
 class Race(Model):
-    name = CharField(max_length=32, primary_key=True)
+    name = CharField(max_length=32)
 
     def __str__(self):
         return self.name

@@ -1,0 +1,8 @@
+{% block content %}
+  <h1>Races</h1>
+  <ul>
+    {% for race in object_list %}
+      <li><a href="race/{{ race.pk }}/">{{ race }}</a></li>
+    {% endfor %}
+  </ul>
+{% endblock %}

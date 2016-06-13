@@ -1,0 +1,8 @@
+{% block content %}
+  <h1>{{ object }}</h1>
+  <ul>
+    {% for sound in object.sound_set.all %}
+      <li>{{ sound }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
