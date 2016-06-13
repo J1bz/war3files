@@ -1,8 +1,16 @@
+{% include "header.html" %}
 {% block content %}
-  <h1>{{ object }}</h1>
-  <ul>
-    {% for unit in object.unit_set.all %}
-      <li><a href="/unit/{{ unit.pk }}/">{{ unit }}</a></li>
-    {% endfor %}
-  </ul>
+  <div class="container">
+    <h1>{{ object }}</h1>
+    <ul class="list-group">
+      {% for unit in object.unit_set.all %}
+        <a href="/unit/{{ unit.pk }}/">
+          <li class="list-group-item">
+            <img src="/media/{{ unit.icon }}" /> {{ unit }}
+          </li>
+        </a>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
+{% include "footer.html" %}

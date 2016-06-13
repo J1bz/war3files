@@ -1,8 +1,12 @@
+{% include "header.html" %}
 {% block content %}
-  <h1>Races</h1>
-  <ul>
-    {% for race in object_list %}
-      <li><a href="race/{{ race.pk }}/">{{ race }}</a></li>
-    {% endfor %}
-  </ul>
+  <div class="container">
+    <h1>Races</h1>
+    <ul class="list-group">
+      {% for race in object_list %}
+        <li class="list-group-item"><a href="race/{{ race.pk }}/">{{ race }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
+{% include "footer.html" %}

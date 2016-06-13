@@ -1,8 +1,17 @@
+{% include "header.html" %}
 {% block content %}
-  <h1>{{ object }}</h1>
-  <ul>
-    {% for sound in object.sound_set.all %}
-      <li>{{ sound }}</li>
-    {% endfor %}
-  </ul>
+  <div class="container">
+    <h1><img src="/media/{{ object.icon }}"> {{ object }}</h1>
+    <ul class="list-group">
+      {% for sound in object.sound_set.all %}
+        <li class="list-group-item">
+          <button type="button" class="btn btn-default" onclick="play('/media/{{ sound.audio }}')">
+            <span class="glyphicon glyphicon-play"></span>
+          </button>
+          {{ sound.name }}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}
+{% include "footer.html" %}
