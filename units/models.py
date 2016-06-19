@@ -23,6 +23,8 @@ class Unit(Model):
     icon = ImageField(upload_to='icons', null=True, blank=True)
     building = BooleanField(default=False)
     heroic = BooleanField(default=False)
+    special = BooleanField(default=False)
+    campaign = BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -31,4 +33,12 @@ class Unit(Model):
 class UnitForm(ModelForm):
     class Meta:
         model = Unit
-        fields = ('name', 'race', 'icon', 'building', 'heroic',)
+        fields = (
+            'name',
+            'race',
+            'icon',
+            'building',
+            'heroic',
+            'special',
+            'campaign',
+        )

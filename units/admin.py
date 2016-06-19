@@ -15,7 +15,15 @@ class RaceAdmin(admin.ModelAdmin):
 
 class UnitAdmin(admin.ModelAdmin):
     form = UnitForm
-    list_display = ('show_icon', 'name', 'race', 'building', 'heroic',)
+    list_display = (
+        'show_icon',
+        'name',
+        'race',
+        'building',
+        'heroic',
+        'special',
+        'campaign',
+    )
     search_fields = ('name', 'race__name',)
 
     def show_icon(self, obj):
