@@ -3,7 +3,7 @@
   <div class="container">
     <h1><img src="/media/{{ object.icon }}" height="64px" width="64px" /> {{ object }}</h1>
     <ul class="list-group">
-      {% for unit in object.unit_set.all %}
+      {% for unit in object.unit_set.all|dictsort:"name" %}
         <a href="/unit/{{ unit.pk }}/">
           <li class="list-group-item">
             <img src="/media/{{ unit.icon }}" /> {{ unit }}

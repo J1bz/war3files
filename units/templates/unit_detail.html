@@ -3,7 +3,7 @@
   <div class="container">
     <h1><img src="/media/{{ object.icon }}"> {{ object }}</h1>
     <ul class="list-group">
-      {% for sound in object.sound_set.all %}
+        {% for sound in object.sound_set.all|dictsort:"audio.name" %}
         <li class="list-group-item">
           <button type="button" class="btn btn-default" onclick="play('/media/{{ sound.audio }}')">
             <span class="glyphicon glyphicon-play"></span>
