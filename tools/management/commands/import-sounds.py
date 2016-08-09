@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 from django.core.files import File
 
 from tools.apps import (
-    RACE_ICONS, ICONS_DIR, CATEGORIZATION, REPLACEABLE_ICONS)
+    RACE_ICONS, REPLACEABLE_ICONS_DIR, UNITS_MAPPING)
 from tools.utils import cmd
 from units.models import Race, Unit
 from sounds.models import Sound
@@ -19,58 +19,91 @@ class Command(BaseCommand):
                             help='Extracted mpq documents root')
 
     def handle(self, *args, **options):
-        units_root = join(options['root'], 'Units')
+        self.root = options['root']
+
+        for r, r_root, r_icon in self.get_races():
+            self.handle_race(r, r_icon)
+
+            for u, u_root, u_icon, categories in self.get_units(r_root):
+                self.handle_unit(r, u, u_icon, categories)
+
+                for s, s_path in self.get_sounds(u_root):
+                    self.handle_sound(r, u, s_path)
+
+    def get_races(self):
+        units_root = join(self.root, 'Units')
 
         for race in listdir(units_root):
             race_root = join(units_root, race)
             if not isdir(race_root):
                 continue
 
-            race_icon_file = RACE_ICONS.get(
-                race, join(ICONS_DIR, 'BTNSelectHeroOn.blp'))
-            race_icon_path = join(options['root'], race_icon_file)
-            self.handle_race(race, race_icon_path)
+            icon_file = RACE_ICONS.get(race, None)
+            if icon_file is None:
+                self.stdout.write(
+                    "{} race icon not found : using a question mark instead".
+                    format(race))
+                icon_path = self.get_question_mark_path()
+            else:
+                icon_path = join(self.root, icon_file)
 
-            for unit in listdir(race_root):
-                categories = CATEGORIZATION.get(unit, ())
+            yield race, race_root, icon_path
 
-                unit_root = join(race_root, unit)
-                if not isdir(unit_root):
-                    continue
+    def get_question_mark_path(self):
+        return join(self.root, REPLACEABLE_ICONS_DIR, 'BTNSelectHeroOn.blp')
 
-                buttons = join(options['root'], ICONS_DIR)
-                icon_path = join(buttons, 'BTN{}.blp'.format(unit))
-                if not isfile(icon_path):
-                    equivalence = REPLACEABLE_ICONS.get(unit, None)
-                    if equivalence is None:
-                        self.stdout.write(
-                            "{} not found for unit {} and its replaceable "
-                            "icon is not defined".format(icon_path, unit))
-                        continue
+    def get_units(self, race_root):
+        for unit in listdir(race_root):
+            categories = self.get_categories(unit)
 
-                    replaceable_icon = join(ICONS_DIR,
-                                            'BTN{}.blp'.format(equivalence))
+            unit_root = join(race_root, unit)
+            if not isdir(unit_root):
+                continue
 
-                    icon_path = join(options['root'], replaceable_icon)
-                    if not isfile(icon_path):
-                        self.stdout.write(
-                            "Unit {} has no icon and its replaceable icon {} "
-                            "is not a file : using a question mark instead".
-                            format(unit, icon_path))
+            icon_path = self.get_unit_icon_path(unit)
 
-                        question_mark = 'SelectHeroOn'
-                        icon_path = join(options['root'],
-                                         ICONS_DIR,
-                                         'BTN{}.blp'.format(question_mark))
+            yield unit, unit_root, icon_path, categories
 
-                self.handle_unit(race, unit, icon_path, categories)
+    def get_categories(self, unit):
+        return UNITS_MAPPING.get(unit, {}).get('categorization', ())
 
-                for sound in listdir(unit_root):
-                    sound_path = join(unit_root, sound)
-                    if not isfile(sound_path) or sound_path[-4:] != '.wav':
-                        continue
+    def get_unit_icon_path(self, unit):
+        if not hasattr(self, 'buttons'):
+            self.buttons = join(self.root, REPLACEABLE_ICONS_DIR)
+        buttons = self.buttons
 
-                    self.handle_sound(race, unit, sound_path)
+        icon_path = join(buttons, 'BTN{}.blp'.format(unit))
+        if not isfile(icon_path):
+            replace = UNITS_MAPPING.get(unit, {}).get('replaceable_icon', None)
+            if replace is None:
+                self.stdout.write(
+                    "{} not found for unit {} and its replaceable "
+                    "icon is not defined : using a question mark instead".
+                    format(icon_path, unit))
+
+                return self.get_question_mark_path()
+
+            replaceable_icon = join(REPLACEABLE_ICONS_DIR,
+                                    'BTN{}.blp'.format(replace))
+
+            icon_path = join(self.root, replaceable_icon)
+            if not isfile(icon_path):
+                self.stdout.write(
+                    "Unit {} has no icon and its replaceable icon {} "
+                    "is not a file : using a question mark instead".
+                    format(unit, icon_path))
+
+                return self.get_question_mark_path()
+
+        return icon_path
+
+    def get_sounds(self, unit_root):
+        for sound in listdir(unit_root):
+            sound_path = join(unit_root, sound)
+            if not isfile(sound_path) or sound_path[-4:] != '.wav':
+                continue
+
+            yield sound, sound_path
 
     def handle_race(self, race, icon):
         icon_dir = dirname(icon)
@@ -121,12 +154,12 @@ class Command(BaseCommand):
         r = Race.objects.get(name=race)
         u = Unit.objects.get(name=self.beautiful_name(unit), race=r)
 
-        sound_name = basename(sound)[:-4]
+        name = basename(sound)[:-4]
 
         with open(sound, 'rb') as fh:
             s = File(fh)
             Sound.objects.get_or_create(
-                name=sound_name,
+                name=name,
                 unit=u,
                 audio=s,
             )

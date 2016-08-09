@@ -11,185 +11,434 @@ RACE_ICONS = {
     'Undead': 'UI/Glues/Loading/Backgrounds/Campaigns/UndeadSymbol.blp',
 }
 
-ICONS_DIR = 'ReplaceableTextures/CommandButtons'
+REPLACEABLE_ICONS_DIR = 'ReplaceableTextures/CommandButtons'
 
-CATEGORIZATION = {
-    'ChaosWarlockGreen': ('campaign'),
-    'GoblinLandMine': ('special'),
-    'Medivh': ('campaign', 'heroic'),
-    'SpiritPig': ('special'),
-    'SylvanusWindrunner': ('campaign', 'heroic'),
-    'AncestralGuardian': ('special'),
-    'TempArt': ('special'),
-    'WindSerpent': ('special'),
-    'ChaosSpaceOrc': ('campaign'),
-    'ElfVillagerWoman': ('campaign'),
-    'HighElfPeasant': ('campaign'),
-    'Hydralisk': ('campaign'),
-    'Marine': ('campaign'),
-    'OrcJuggernaught': ('campaign'),
-    'SammyCube': ('special'),
-    'Shoveler': ('special'),
-    'VillagerKid': ('campaign'),
-    'VillagerKid1': ('campaign'),
-    'VillagerMan': ('campaign'),
-    'VillagerMan1': ('campaign'),
-    'VillagerWoman': ('campaign'),
-    'Zergling': ('campaign'),
-    'FlyingSheep': ('campaign', 'special'),
-    'Hellscream': ('campaign', 'heroic'),
-    'ChaosGrunt': ('campaign'),
-    'ChaosHellscream': ('campaign', 'heroic'),
-    'ChaosKotoBeast': ('campaign'),
-    'ChaosOrcRange': ('campaign'),
-    'ChaosPeon': ('campaign'),
-    'ChaosWarlock': ('campaign'),
-    'ChaosWarlord': ('campaign'),
-    'ChaosWolfrider': ('campaign'),
-    'DoomGuard': ('campaign'),
-    'HeroChaosBladeMaster': ('campaign', 'heroic'),
-    'Infernal': ('campaign'),
-    'Mannoroth': ('campaign', 'heroic'),
-    'Pitlord': ('campaign', 'heroic'),
-    'Warlock': ('campaign'),
-    'felhound': ('campaign'),
-    'Arthas': ('campaign', 'heroic'),
-    'ArthaswithSword': ('campaign', 'heroic'),
-    'HeroArchMage': ('heroic'),
-    'HeroMountainKing': ('heroic'),
-    'HeroPaladin': ('heroic'),
-    'HeroPaladinBoss': ('campaign', 'heroic'),
-    'HeroPaladinBoss2': ('campaign', 'heroic'),
-    'Jaina': ('campaign', 'heroic'),
-    'KnightNoRider': ('campaign', 'special'),
-    'Militia': ('special'),
-    'Muradin': ('campaign', 'heroic'),
-    'TheCaptain': ('campaign'),
-    'Uther': ('campaign', 'heroic'),
-    'WarWagon': ('campaign', 'special'),
-    'WaterElemental': ('special'),
-    'Ent': ('special'),
-    'Furion': ('campaign', 'heroic'),
-    'HeroDemonHunter': ('heroic'),
-    'HeroKeeperOfTheGrove': ('heroic'),
-    'HeroKeeperoftheGroveGhost': ('campaign', 'heroic'),
-    'HeroMoonPriestess': ('heroic'),
-    'Illidan': ('campaign', 'heroic'),
-    'Owl': ('special'),
-    'OwlSCOUT': ('special'),
-    'RiddenHippoGryph': ('special'),
-    'Shandris': ('campaign', 'heroic'),
-    'Tyrande': ('campaign', 'heroic'),
-    'AncestralGuardian': ('special'),
-    'Cairne': ('campaign', 'heroic'),
-    'HealingWard': ('special'),
-    'Hellscream': ('campaign', 'heroic'),
-    'HeroBladeMaster': ('heroic'),
-    'HeroFarseer': ('heroic'),
-    'HeroTaurenChieftain': ('heroic'),
-    'HeroTaurenChieftainCIN': ('campaign', 'heroic'),
-    'KotoBeastNoRider': ('campaign'),
-    'RiderlessWyvern': ('campaign'),
-    'SentryWard': ('special'),
-    'Spiritwolf': ('special'),
-    'StasisTotem': ('special'),
-    'Thrall': ('heroic'),
-    'AbominationCIN': ('campaign'),
-    'EvilArthas': ('campaign', 'heroic'),
-    'HeroDeathKnight': ('heroic'),
-    'HeroDreadLord': ('heroic'),
-    'HeroLich': ('heroic'),
-    'HeroLichCIN': ('campaign', 'heroic'),
-    'KelThuzadLich': ('campaign', 'heroic'),
-    'KelThuzadNecro': ('campaign', 'heroic'),
-    'Kelthuzad': ('campaign', 'heroic'),
-    'KelthuzadGhost': ('campaign', 'heroic'),
-    'PlagueCloud': ('special'),
-    'Skeleton': ('special'),
-    'Tichondrius': ('campaign', 'heroic'),
-}
-
-REPLACEABLE_ICONS = {
-    'ElfVillagerWoman': 'FemaleElfVillager',
-    'BlackStagMale': 'Stag',
-    'BrownWolf': 'DireWolf',
-    'SammyCube': 'SelectHeroOn',
-    'Rat': 'YouDirtyRat!',
-    'OrcJuggernaught': 'Juggernaut',
-    'HighElfPeasant': 'ElfVillager',
-    'VillagerKid1': 'VillagerKid2',
-    'zergling': 'Zergling',
-    'FlyingSheep': 'Sheep',
-    'WhiteWolf': 'TimberWolf',
-    'WendigoShaman': 'Wendigo',
-    'BansheeGhost': 'Ghost',
-    'Watcher': 'AvengingWatcher',
-    'WindSerpent': 'SelectHeroOn',
-    'NerubianSpiderLord': 'nerubianSpiderLord',
-    'HumanMage': 'BanditMage',
-    'BronzeDragonWelp': 'BronzeDragon',
-    'BurningArcher': 'SkeletonArcher',
-    'RazorManeChief': 'RazormaneChief',
-    'GnollOverSeer': 'GnollKing',
-    'BlackDragonWelp': 'BlackDragon',
-    'BristleBack': 'Razorback',
-    'RedDragonWelp': 'RedDragon',
-    'ForestTrollTrapper': 'ForestTrollTrapper',
-    'IronGolem': 'ArmorGolem',
-    'AzureDragonWelp': 'AzureDragon',
-    'TempArt': 'SelectHeroOn',
-    'SpiritPig': 'Pig',
-    'HighElfArcher': 'HighElvenArcher',
-    'SludgeMonster': 'SludgeCreature',
-    'satyrhellcaller': 'SatyrTrickster',
-    'RazorMane': 'Razorback',
-    'GolemStatue': 'ArmorGolem',
-    'MurlocWarrior': 'Murloc',
-    'Owlbear': 'OwlBear',
-    'SylvanusWindrunner': 'SylvanusWindRunner',
-    'GreenDragonWelp': 'GreenDragon',
-    'ChaosWolfrider': 'ChaosWolfRider',
-    'ChaosOrcRange': 'SelectHeroOn',
-    'ChaosHellscream': 'ChaosGrom',
-    'HeroChaosBladeMaster': 'ChaosBlademaster',
-    'Pitlord': 'PitLord',
-    'felhound': 'FelHound',
-    'Warlock': 'OrcWarlockRed',
-    'Muradin': 'HeroMountainKing',
-    'GyroCopter': 'Gyrocopter',
-    'HeroPaladinBoss2': 'HeroPaladin',
-    'WarWagon': 'SeigeEngine',
-    'KnightNoRider': 'RiderlessHorse',
-    'ArthaswithSword': 'Arthas',
-    'HeroPaladinBoss': 'HeroPaladin',
-    'WaterElemental': 'SummonWaterElemental',
-    'Uther': 'HeroPaladin',
-    'Meatwagon': 'MeatWagon',
-    'HeroLichCIN': 'LichVersion2',
-    'Kelthuzad': 'KelThuzad',
-    'KelthuzadGhost': 'GhostOfKelThuzad',
-    'KelThuzadLich': 'KelThuzad',
-    'KelThuzadNecro': 'GhostOfKelThuzad',
-    'Skeleton': 'SkeletonWarrior',
-    'AbominationCIN': 'Abomination',
-    'EvilArthas': 'HeroDeathKnight',
-    'Tyrande': 'HeroMoonPriestess',
-    'RiddenHippoGryph': 'HippogriffRider',
-    'HippoGryph': 'Hippogriff',
-    'HeroKeeperOfTheGrove': 'KeeperOfTheGrove',
-    'Illidan': 'HeroDemonHunter',
-    'OwlSCOUT': 'Scout',
-    'Owl': 'OwlBear',
-    'HeroKeeperoftheGroveGhost': 'KeeperGhostBlue',
-    'HeroBladeMaster': 'HeroBlademaster',
-    'RiderlessWyvern': 'Wyvern',
-    'HeroTaurenChieftainCIN': 'HeroTaurenChieftain',
-    'AncestralGuardian': 'SelectHeroOn',
-    'Cairne': 'HeroTaurenChieftain',
-    'Wolfrider': 'Raider',
-    'StasisTotem': 'StasisTrap',
-    'KotoBeastNoRider': 'RiderlessKodo',
-    'Hellscream': 'HellScream',
-    'HeadHunter': 'Headhunter',
-    'Spiritwolf': 'SpiritWolf',
+UNITS_MAPPING = {
+    'AbominationCIN': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'Abomination',
+    },
+    'AncestralGuardian': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SelectHeroOn',
+    },
+    'Arthas': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'ArthaswithSword': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'Arthas',
+    },
+    'AzureDragonWelp': {
+        'replaceable_icon': 'AzureDragon',
+    },
+    'BansheeGhost': {
+        'replaceable_icon': 'Ghost',
+    },
+    'BlackDragonWelp': {
+        'replaceable_icon': 'BlackDragon',
+    },
+    'BlackStagMale': {
+        'replaceable_icon': 'Stag',
+    },
+    'BristleBack': {
+        'replaceable_icon': 'Razorback',
+    },
+    'BronzeDragonWelp': {
+        'replaceable_icon': 'BronzeDragon',
+    },
+    'BrownWolf': {
+        'replaceable_icon': 'DireWolf',
+    },
+    'BurningArcher': {
+        'replaceable_icon': 'SkeletonArcher',
+    },
+    'Cairne': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroTaurenChieftain',
+    },
+    'ChaosGrunt': {
+        'categorization': ('campaign'),
+    },
+    'ChaosHellscream': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'ChaosGrom',
+    },
+    'ChaosKotoBeast': {
+        'categorization': ('campaign'),
+    },
+    'ChaosOrcRange': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'SelectHeroOn',
+    },
+    'ChaosPeon': {
+        'categorization': ('campaign'),
+    },
+    'ChaosSpaceOrc': {
+        'categorization': ('campaign'),
+    },
+    'ChaosWarlock': {
+        'categorization': ('campaign'),
+    },
+    'ChaosWarlockGreen': {
+        'categorization': ('campaign'),
+    },
+    'ChaosWarlord': {
+        'categorization': ('campaign'),
+    },
+    'ChaosWolfrider': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'ChaosWolfRider',
+    },
+    'DoomGuard': {
+        'categorization': ('campaign'),
+    },
+    'ElfVillagerWoman': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'FemaleElfVillager',
+    },
+    'Ent': {
+        'categorization': ('special'),
+    },
+    'EvilArthas': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroDeathKnight',
+    },
+    'felhound': {
+        'categorization': ('campaign'),
+    },
+    'FlyingSheep': {
+        'categorization': ('campaign', 'special'),
+    },
+    'Furion': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'FlyingSheep': {
+        'replaceable_icon': 'Sheep',
+    },
+    'ForestTrollTrapper': {
+        'replaceable_icon': 'ForestTrollTrapper',
+    },
+    'felhound': {
+        'replaceable_icon': 'FelHound',
+    },
+    'GnollOverSeer': {
+        'replaceable_icon': 'GnollKing',
+    },
+    'GoblinLandMine': {
+        'categorization': ('special'),
+    },
+    'GolemStatue': {
+        'replaceable_icon': 'ArmorGolem',
+    },
+    'GreenDragonWelp': {
+        'replaceable_icon': 'GreenDragon',
+    },
+    'GyroCopter': {
+        'replaceable_icon': 'Gyrocopter',
+    },
+    'HeadHunter': {
+        'replaceable_icon': 'Headhunter',
+    },
+    'HealingWard': {
+        'categorization': ('special'),
+    },
+    'Hellscream': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HellScream',
+    },
+    'HeroArchMage': {
+        'categorization': ('heroic'),
+    },
+    'HeroBladeMaster': {
+        'categorization': ('heroic'),
+        'replaceable_icon': 'HeroBlademaster',
+    },
+    'HeroChaosBladeMaster': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'ChaosBlademaster',
+    },
+    'HeroDeathKnight': {
+        'categorization': ('heroic'),
+    },
+    'HeroDemonHunter': {
+        'categorization': ('heroic'),
+    },
+    'HeroDreadLord': {
+        'categorization': ('heroic'),
+    },
+    'HeroFarseer': {
+        'categorization': ('heroic'),
+    },
+    'HeroKeeperOfTheGrove': {
+        'categorization': ('heroic'),
+        'replaceable_icon': 'KeeperOfTheGrove',
+    },
+    'HeroKeeperoftheGroveGhost': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'KeeperGhostBlue',
+    },
+    'HeroLich': {
+        'categorization': ('heroic'),
+    },
+    'HeroLichCIN': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'LichVersion2',
+    },
+    'HeroMoonPriestess': {
+        'categorization': ('heroic'),
+    },
+    'HeroMountainKing': {
+        'categorization': ('heroic'),
+    },
+    'HeroPaladin': {
+        'categorization': ('heroic'),
+    },
+    'HeroPaladinBoss': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroPaladin',
+    },
+    'HeroPaladinBoss2': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroPaladin',
+    },
+    'HeroTaurenChieftain': {
+        'categorization': ('heroic'),
+    },
+    'HeroTaurenChieftainCIN': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroTaurenChieftain',
+    },
+    'HighElfArcher': {
+        'replaceable_icon': 'HighElvenArcher',
+    },
+    'HighElfPeasant': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'ElfVillager',
+    },
+    'HippoGryph': {
+        'replaceable_icon': 'Hippogriff',
+    },
+    'HumanMage': {
+        'replaceable_icon': 'BanditMage',
+    },
+    'Hydralisk': {
+        'categorization': ('campaign'),
+    },
+    'IronGolem': {
+        'replaceable_icon': 'ArmorGolem',
+    },
+    'Illidan': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroDemonHunter',
+    },
+    'Infernal': {
+        'categorization': ('campaign'),
+    },
+    'Jaina': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'Kelthuzad': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'KelThuzad',
+    },
+    'KelthuzadGhost': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'GhostOfKelThuzad',
+    },
+    'KelThuzadLich': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'KelThuzad',
+    },
+    'KelThuzadNecro': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'GhostOfKelThuzad',
+    },
+    'KnightNoRider': {
+        'categorization': ('campaign', 'special'),
+        'replaceable_icon': 'RiderlessHorse',
+    },
+    'KotoBeastNoRider': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'RiderlessKodo',
+    },
+    'Mannoroth': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'Marine': {
+        'categorization': ('campaign'),
+    },
+    'Meatwagon': {
+        'replaceable_icon': 'MeatWagon',
+    },
+    'Medivh': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'Militia': {
+        'categorization': ('special'),
+    },
+    'Muradin': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroMountainKing',
+    },
+    'MurlocWarrior': {
+        'replaceable_icon': 'Murloc',
+    },
+    'NerubianSpiderLord': {
+        'replaceable_icon': 'nerubianSpiderLord',
+    },
+    'OrcJuggernaught': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'Juggernaut',
+    },
+    'Owlbear': {
+        'replaceable_icon': 'OwlBear',
+    },
+    'Owl': {
+        'categorization': ('special'),
+        'replaceable_icon': 'OwlBear',
+    },
+    'OwlSCOUT': {
+        'categorization': ('special'),
+        'replaceable_icon': 'Scout',
+    },
+    'Pitlord': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'PitLord',
+    },
+    'PlagueCloud': {
+        'categorization': ('special'),
+    },
+    'Rat': {
+        'replaceable_icon': 'YouDirtyRat!',
+    },
+    'RazorMane': {
+        'replaceable_icon': 'Razorback',
+    },
+    'RazorManeChief': {
+        'replaceable_icon': 'RazormaneChief',
+    },
+    'RedDragonWelp': {
+        'replaceable_icon': 'RedDragon',
+    },
+    'RiddenHippoGryph': {
+        'categorization': ('special'),
+        'replaceable_icon': 'HippogriffRider',
+    },
+    'RiderlessWyvern': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'Wyvern',
+    },
+    'SammyCube': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SelectHeroOn',
+    },
+    'satyrhellcaller': {
+        'replaceable_icon': 'SatyrTrickster',
+    },
+    'SentryWard': {
+        'categorization': ('special'),
+    },
+    'Shandris': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'Shoveler': {
+        'categorization': ('special'),
+    },
+    'Skeleton': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SkeletonWarrior',
+    },
+    'SludgeMonster': {
+        'replaceable_icon': 'SludgeCreature',
+    },
+    'SpiritPig': {
+        'categorization': ('special'),
+        'replaceable_icon': 'Pig',
+    },
+    'Spiritwolf': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SpiritWolf',
+    },
+    'StasisTotem': {
+        'categorization': ('special'),
+        'replaceable_icon': 'StasisTrap',
+    },
+    'SylvanusWindrunner': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'SylvanusWindRunner',
+    },
+    'TempArt': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SelectHeroOn',
+    },
+    'TheCaptain': {
+        'categorization': ('campaign'),
+    },
+    'Thrall': {
+        'categorization': ('heroic'),
+    },
+    'Tichondrius': {
+        'categorization': ('campaign', 'heroic'),
+    },
+    'Tyrande': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroMoonPriestess',
+    },
+    'Uther': {
+        'categorization': ('campaign', 'heroic'),
+        'replaceable_icon': 'HeroPaladin',
+    },
+    'VillagerKid': {
+        'categorization': ('campaign'),
+    },
+    'VillagerKid1': {
+        'categorization': ('campaign'),
+        'replaceable_icon': 'VillagerKid2',
+    },
+    'VillagerMan': {
+        'categorization': ('campaign'),
+    },
+    'VillagerMan1': {
+        'categorization': ('campaign'),
+    },
+    'VillagerWoman': {
+        'categorization': ('campaign'),
+    },
+    'Warlock': {
+        'categorization': ('campaign'),
+    },
+    'WarWagon': {
+        'categorization': ('campaign', 'special'),
+    },
+    'Warlock': {
+        'replaceable_icon': 'OrcWarlockRed',
+    },
+    'WarWagon': {
+        'replaceable_icon': 'SeigeEngine',
+    },
+    'Watcher': {
+        'replaceable_icon': 'AvengingWatcher',
+    },
+    'WaterElemental': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SummonWaterElemental',
+    },
+    'WendigoShaman': {
+        'replaceable_icon': 'Wendigo',
+    },
+    'WhiteWolf': {
+        'replaceable_icon': 'TimberWolf',
+    },
+    'WindSerpent': {
+        'categorization': ('special'),
+        'replaceable_icon': 'SelectHeroOn',
+    },
+    'Wolfrider': {
+        'replaceable_icon': 'Raider',
+    },
+    'zergling': {  # Zergling ?
+        'categorization': ('campaign'),
+        'replaceable_icon': 'Zergling',
+    },
 }

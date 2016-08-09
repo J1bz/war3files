@@ -1,9 +1,9 @@
 {% include "header.html" %}
 {% block content %}
   <div class="container">
-    <h1><img src="/media/{{ object.icon }}" height="64px" width="64px" /> {{ object }}</h1>
+    <h1><img src="/media/{{ race.icon }}" height="64px" width="64px" /> {{ race }}</h1>
     <ul class="list-group">
-      {% for unit in object.unit_set.all|dictsort:"name" %}
+      {% for unit in race.unit_set.all|dictsort:"name" %}
         <a href="/unit/{{ unit.pk }}/">
           <li class="list-group-item">
             <img src="/media/{{ unit.icon }}" /> {{ unit }}

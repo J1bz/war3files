@@ -17,11 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
-from units.views import RaceListView, RaceDetailView, UnitDetailView
+from units.views import RaceListView, race_detail_view, UnitDetailView
 
 urlpatterns = [
     url(r'^$', RaceListView.as_view()),
-    url(r'^race/(?P<pk>\d+)/?$', RaceDetailView.as_view()),
+    url(r'^race/(\d+)/?$', race_detail_view),
     url(r'^unit/(?P<pk>\d+)/?$', UnitDetailView.as_view()),
 
     url(r'^admin/', admin.site.urls),
