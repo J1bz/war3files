@@ -54,6 +54,9 @@ class Command(BaseCommand):
 
     def get_units(self, race_root):
         for unit in listdir(race_root):
+            if self.is_ignored(unit):
+                continue
+
             categories = self.get_categories(unit)
 
             unit_root = join(race_root, unit)
@@ -63,6 +66,9 @@ class Command(BaseCommand):
             icon_path = self.get_unit_icon_path(unit)
 
             yield unit, unit_root, icon_path, categories
+
+    def is_ignored(self, unit):
+        return UNITS_MAPPING.get(unit, {}).get('ignore', False)
 
     def get_categories(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('categorization', ())

@@ -15,6 +15,7 @@ REPLACEABLE_ICONS_DIR = 'ReplaceableTextures/CommandButtons'
 
 UNITS_MAPPING = {
     'AbominationCIN': {
+        'ignore': True,
         'categorization': ('campaign'),
         'replaceable_icon': 'Abomination',
     },
@@ -68,6 +69,7 @@ UNITS_MAPPING = {
         'categorization': ('campaign'),
     },
     'ChaosOrcRange': {
+        'ignore': True,
         'categorization': ('campaign'),
         'replaceable_icon': 'SelectHeroOn',
     },
@@ -182,6 +184,7 @@ UNITS_MAPPING = {
         'categorization': ('heroic'),
     },
     'HeroLichCIN': {
+        'ignore': True,
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'LichVersion2',
     },
@@ -195,10 +198,12 @@ UNITS_MAPPING = {
         'categorization': ('heroic'),
     },
     'HeroPaladinBoss': {
+        'ignore': True,
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'HeroPaladin',
     },
     'HeroPaladinBoss2': {
+        'ignore': True,
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'HeroPaladin',
     },
@@ -206,6 +211,7 @@ UNITS_MAPPING = {
         'categorization': ('heroic'),
     },
     'HeroTaurenChieftainCIN': {
+        'ignore': True,
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'HeroTaurenChieftain',
     },
@@ -239,10 +245,12 @@ UNITS_MAPPING = {
         'categorization': ('campaign', 'heroic'),
     },
     'Kelthuzad': {
+        'ignore': True,
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'KelThuzad',
     },
     'KelthuzadGhost': {
+        'ignore': True,
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'GhostOfKelThuzad',
     },
@@ -369,6 +377,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'SylvanusWindRunner',
     },
     'TempArt': {
+        'ignore': True,
         'categorization': ('special'),
         'replaceable_icon': 'SelectHeroOn',
     },
