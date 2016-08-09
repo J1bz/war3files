@@ -27,6 +27,7 @@ UNITS_MAPPING = {
         'categorization': ('campaign', 'heroic'),
     },
     'ArthaswithSword': {
+        'name': 'Arthas (with Frostmourne)',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'Arthas',
     },
@@ -107,7 +108,9 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroDeathKnight',
     },
     'felhound': {
+        'name': 'Felhound',
         'categorization': ('campaign'),
+        'replaceable_icon': 'FelHound',
     },
     'FlyingSheep': {
         'categorization': ('campaign', 'special'),
@@ -120,9 +123,6 @@ UNITS_MAPPING = {
     },
     'ForestTrollTrapper': {
         'replaceable_icon': 'ForestTrollTrapper',
-    },
-    'felhound': {
-        'replaceable_icon': 'FelHound',
     },
     'GnollOverSeer': {
         'replaceable_icon': 'GnollKing',
@@ -137,6 +137,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'GreenDragon',
     },
     'GyroCopter': {
+        'name': 'Gyrocopter',
         'replaceable_icon': 'Gyrocopter',
     },
     'HeadHunter': {
@@ -150,37 +151,47 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HellScream',
     },
     'HeroArchMage': {
+        'name': 'Archmage',
         'categorization': ('heroic'),
     },
     'HeroBladeMaster': {
+        'name': 'Blade Master',
         'categorization': ('heroic'),
         'replaceable_icon': 'HeroBlademaster',
     },
     'HeroChaosBladeMaster': {
+        'name': 'Blade Master of the Blackrock Clan',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'ChaosBlademaster',
     },
     'HeroDeathKnight': {
+        'name': 'Death Knight',
         'categorization': ('heroic'),
     },
     'HeroDemonHunter': {
+        'name': 'Demon Hunter',
         'categorization': ('heroic'),
     },
     'HeroDreadLord': {
+        'name': 'Dread Lord',
         'categorization': ('heroic'),
     },
     'HeroFarseer': {
+        'name': 'Far Seer',
         'categorization': ('heroic'),
     },
     'HeroKeeperOfTheGrove': {
+        'name': 'Keeper of the Grove',
         'categorization': ('heroic'),
         'replaceable_icon': 'KeeperOfTheGrove',
     },
     'HeroKeeperoftheGroveGhost': {
+        'name': 'Keeper of the Grove (Ghost)',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'KeeperGhostBlue',
     },
     'HeroLich': {
+        'name': 'Lich',
         'categorization': ('heroic'),
     },
     'HeroLichCIN': {
@@ -189,12 +200,15 @@ UNITS_MAPPING = {
         'replaceable_icon': 'LichVersion2',
     },
     'HeroMoonPriestess': {
+        'name': 'Moon Priestess',
         'categorization': ('heroic'),
     },
     'HeroMountainKing': {
+        'name': 'Mountain King',
         'categorization': ('heroic'),
     },
     'HeroPaladin': {
+        'name': 'Paladin',
         'categorization': ('heroic'),
     },
     'HeroPaladinBoss': {
@@ -208,6 +222,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroPaladin',
     },
     'HeroTaurenChieftain': {
+        'name': 'Tauren Chieftain',
         'categorization': ('heroic'),
     },
     'HeroTaurenChieftainCIN': {
@@ -223,6 +238,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'ElfVillager',
     },
     'HippoGryph': {
+        'name': 'Hippogryph',
         'replaceable_icon': 'Hippogriff',
     },
     'HumanMage': {
@@ -267,6 +283,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'RiderlessHorse',
     },
     'KotoBeastNoRider': {
+        'name': 'Koto Beast (no rider)',
         'categorization': ('campaign'),
         'replaceable_icon': 'RiderlessKodo',
     },
@@ -277,6 +294,7 @@ UNITS_MAPPING = {
         'categorization': ('campaign'),
     },
     'Meatwagon': {
+        'name': 'Meat Wagon',
         'replaceable_icon': 'MeatWagon',
     },
     'Medivh': {
@@ -300,13 +318,16 @@ UNITS_MAPPING = {
         'replaceable_icon': 'Juggernaut',
     },
     'Owlbear': {
+        'name': 'Owl',
         'replaceable_icon': 'OwlBear',
     },
     'Owl': {
+        'name': 'Owl (huntress)',
         'categorization': ('special'),
         'replaceable_icon': 'OwlBear',
     },
     'OwlSCOUT': {
+        'name': 'Owl Scout',
         'categorization': ('special'),
         'replaceable_icon': 'Scout',
     },
@@ -330,6 +351,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'RedDragon',
     },
     'RiddenHippoGryph': {
+        'name': 'Ridden Hippogryph',
         'categorization': ('special'),
         'replaceable_icon': 'HippogriffRider',
     },
@@ -342,6 +364,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'SelectHeroOn',
     },
     'satyrhellcaller': {
+        'name': 'Satyr Hellcaller',
         'replaceable_icon': 'SatyrTrickster',
     },
     'SentryWard': {
@@ -365,6 +388,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'Pig',
     },
     'Spiritwolf': {
+        'name': 'Spirit Wolf',
         'categorization': ('special'),
         'replaceable_icon': 'SpiritWolf',
     },
@@ -373,6 +397,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'StasisTrap',
     },
     'SylvanusWindrunner': {
+        'name': 'Sylvanas Windrunner',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'SylvanusWindRunner',
     },
@@ -399,19 +424,24 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroPaladin',
     },
     'VillagerKid': {
+        'name': 'Kid',
         'categorization': ('campaign'),
     },
     'VillagerKid1': {
+        'name': 'Kid (2)',
         'categorization': ('campaign'),
         'replaceable_icon': 'VillagerKid2',
     },
     'VillagerMan': {
+        'name': 'Villager (Man)',
         'categorization': ('campaign'),
     },
     'VillagerMan1': {
+        'name': 'Villager (Man 2)',
         'categorization': ('campaign'),
     },
     'VillagerWoman': {
+        'name': 'Villager (Woman)',
         'categorization': ('campaign'),
     },
     'Warlock': {
@@ -446,7 +476,8 @@ UNITS_MAPPING = {
     'Wolfrider': {
         'replaceable_icon': 'Raider',
     },
-    'zergling': {  # Zergling ?
+    'zergling': {
+        'name': 'Zergling',
         'categorization': ('campaign'),
         'replaceable_icon': 'Zergling',
     },

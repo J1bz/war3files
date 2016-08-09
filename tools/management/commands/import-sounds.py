@@ -57,6 +57,8 @@ class Command(BaseCommand):
             if self.is_ignored(unit):
                 continue
 
+            name = self.get_name(unit)
+
             categories = self.get_categories(unit)
 
             unit_root = join(race_root, unit)
@@ -65,10 +67,27 @@ class Command(BaseCommand):
 
             icon_path = self.get_unit_icon_path(unit)
 
-            yield unit, unit_root, icon_path, categories
+            yield name, unit_root, icon_path, categories
 
     def is_ignored(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('ignore', False)
+
+    def get_name(self, unit):
+        custom_name = UNITS_MAPPING.get(unit, {}).get('name', None)
+        if custom_name is None:
+            return self.beautiful_name(unit)
+        else:
+            return custom_name
+
+    def beautiful_name(self, name):
+        beautiful_name = name[0]
+        for letter in name[1:]:
+            if letter.isupper():
+                beautiful_name += ' '
+
+            beautiful_name += letter
+
+        return beautiful_name
 
     def get_categories(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('categorization', ())
@@ -124,16 +143,6 @@ class Command(BaseCommand):
                 icon=i,
             )
 
-    def beautiful_name(self, name):
-        beautiful_name = name[0]
-        for letter in name[1:]:
-            if letter.isupper():
-                beautiful_name += ' ' + letter.lower()
-            else:
-                beautiful_name += letter
-
-        return beautiful_name
-
     def handle_unit(self, race, unit, icon, categories):
         icon_dir = dirname(icon)
         cmd('BLPConverter', '--format', 'png', '--dest', icon_dir, icon)
@@ -148,7 +157,7 @@ class Command(BaseCommand):
         with open(png_icon, 'rb') as fh:
             i = File(fh)
             Unit.objects.get_or_create(
-                name=self.beautiful_name(unit),
+                name=unit,
                 race=r,
                 icon=i,
                 heroic=heroic,
@@ -158,7 +167,7 @@ class Command(BaseCommand):
 
     def handle_sound(self, race, unit, sound):
         r = Race.objects.get(name=race)
-        u = Unit.objects.get(name=self.beautiful_name(unit), race=r)
+        u = Unit.objects.get(name=unit, race=r)
 
         name = basename(sound)[:-4]
 
