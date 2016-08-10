@@ -1,16 +1,37 @@
 {% include "header.html" %}
 {% block content %}
   <div class="container">
-    <h1><img src="/media/{{ race.icon }}" height="64px" width="64px" /> {{ race }}</h1>
-    <ul class="list-group">
-      {% for unit in race.unit_set.all|dictsort:"name" %}
-        <a href="/unit/{{ unit.pk }}/">
-          <li class="list-group-item">
-            <img src="/media/{{ unit.icon }}" /> {{ unit }}
-          </li>
-        </a>
-      {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="col-xs-12">
+        <h1><img src="/media/{{ race.icon }}" height="64px" width="64px" /> {{ race }}</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <nav aria-label="previous">
+          <ul class="pagination pagination-sm">
+            <li>
+              <a href="/"><img src="/static/img/BTNLoad.png" height="24px" width="24px" /> Previous</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-group">
+          {% for unit in race.unit_set.all|dictsort:"name" %}
+            <a href="/unit/{{ unit.pk }}/">
+              <li class="list-group-item">
+                <img src="/media/{{ unit.icon }}" /> {{ unit }}
+              </li>
+            </a>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
 {% endblock %}
 {% include "footer.html" %}

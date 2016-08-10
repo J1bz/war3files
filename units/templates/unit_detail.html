@@ -1,17 +1,38 @@
 {% include "header.html" %}
 {% block content %}
   <div class="container">
-    <h1><img src="/media/{{ object.icon }}"> {{ object }}</h1>
-    <ul class="list-group">
-        {% for sound in object.sound_set.all|dictsort:"audio.name" %}
-        <li class="list-group-item">
-          <button type="button" class="btn btn-default" onclick="play('/media/{{ sound.audio }}')">
-            <span class="glyphicon glyphicon-play"></span>
-          </button>
-          {{ sound.name }}
-        </li>
-      {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="col-xs-12">
+        <h1><img src="/media/{{ object.icon }}"> {{ object }}</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <nav aria-label="previous">
+          <ul class="pagination pagination-sm">
+            <li>
+              <a href="/race/{{ object.race.pk }}/"><img src="/static/img/BTNLoad.png" height="24px" width="24px" /> Previous</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="list-group">
+            {% for sound in object.sound_set.all|dictsort:"audio.name" %}
+            <li class="list-group-item">
+              <button type="button" class="btn btn-default" onclick="play('/media/{{ sound.audio }}')">
+                <span class="glyphicon glyphicon-play"></span>
+              </button>
+              {{ sound.name }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
   </div>
 {% endblock %}
 {% include "footer.html" %}
