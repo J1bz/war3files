@@ -60,40 +60,50 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroTaurenChieftain',
     },
     'ChaosGrunt': {
+        'race': 'Orc',
         'categorization': ('campaign'),
     },
     'ChaosHellscream': {
+        'race': 'Orc',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'ChaosGrom',
     },
     'ChaosKotoBeast': {
+        'race': 'Orc',
         'categorization': ('campaign'),
     },
     'ChaosOrcRange': {
         'ignore': True,
+        'race': 'Orc',
         'categorization': ('campaign'),
         'replaceable_icon': 'SelectHeroOn',
     },
     'ChaosPeon': {
+        'race': 'Orc',
         'categorization': ('campaign'),
     },
     'ChaosSpaceOrc': {
         'categorization': ('campaign'),
     },
     'ChaosWarlock': {
+        'race': 'Orc',
         'categorization': ('campaign'),
     },
     'ChaosWarlockGreen': {
+        'race': 'Orc',
         'categorization': ('campaign'),
     },
     'ChaosWarlord': {
+        'race': 'Orc',
         'categorization': ('campaign'),
     },
     'ChaosWolfrider': {
+        'race': 'Orc',
         'categorization': ('campaign'),
         'replaceable_icon': 'ChaosWolfRider',
     },
     'DoomGuard': {
+        'race': 'Creeps',
         'categorization': ('campaign'),
     },
     'ElfVillagerWoman': {
@@ -109,6 +119,7 @@ UNITS_MAPPING = {
     },
     'felhound': {
         'name': 'Felhound',
+        'race': 'Creeps',
         'categorization': ('campaign'),
         'replaceable_icon': 'FelHound',
     },
@@ -161,6 +172,7 @@ UNITS_MAPPING = {
     },
     'HeroChaosBladeMaster': {
         'name': 'Blade Master of the Blackrock Clan',
+        'race': 'Orc',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'ChaosBlademaster',
     },
@@ -255,6 +267,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroDemonHunter',
     },
     'Infernal': {
+        'race': 'Creeps',
         'categorization': ('campaign'),
     },
     'Jaina': {
@@ -288,6 +301,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'RiderlessKodo',
     },
     'Mannoroth': {
+        'race': 'Undead',
         'categorization': ('campaign', 'heroic'),
     },
     'Marine': {
@@ -332,6 +346,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'Scout',
     },
     'Pitlord': {
+        'race': 'Critters',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'PitLord',
     },
@@ -445,15 +460,11 @@ UNITS_MAPPING = {
         'categorization': ('campaign'),
     },
     'Warlock': {
+        'race': 'Creeps',
         'categorization': ('campaign'),
     },
     'WarWagon': {
         'categorization': ('campaign', 'special'),
-    },
-    'Warlock': {
-        'replaceable_icon': 'OrcWarlockRed',
-    },
-    'WarWagon': {
         'replaceable_icon': 'SeigeEngine',
     },
     'Watcher': {

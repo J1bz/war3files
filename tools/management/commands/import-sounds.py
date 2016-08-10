@@ -21,14 +21,13 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.root = options['root']
 
-        for r, r_root, r_icon in self.get_races():
-            self.handle_race(r, r_icon)
+        for race, r_root in self.get_races():
+            for u_race, unit, u_root, u_icon, cats in self.get_units(r_root):
+                real_race = u_race or race
+                u = self.handle_unit(real_race, unit, u_icon, cats)
 
-            for u, u_root, u_icon, categories in self.get_units(r_root):
-                self.handle_unit(r, u, u_icon, categories)
-
-                for s, s_path in self.get_sounds(u_root):
-                    self.handle_sound(r, u, s_path)
+                for sound, s_path in self.get_sounds(u_root):
+                    self.handle_sound(u, s_path)
 
     def get_races(self):
         units_root = join(self.root, 'Units')
@@ -38,16 +37,7 @@ class Command(BaseCommand):
             if not isdir(race_root):
                 continue
 
-            icon_file = RACE_ICONS.get(race, None)
-            if icon_file is None:
-                self.stdout.write(
-                    "{} race icon not found : using a question mark instead".
-                    format(race))
-                icon_path = self.get_question_mark_path()
-            else:
-                icon_path = join(self.root, icon_file)
-
-            yield race, race_root, icon_path
+            yield race, race_root
 
     def get_question_mark_path(self):
         return join(self.root, REPLACEABLE_ICONS_DIR, 'BTNSelectHeroOn.blp')
@@ -57,8 +47,8 @@ class Command(BaseCommand):
             if self.is_ignored(unit):
                 continue
 
+            race = self.get_race(unit)
             name = self.get_name(unit)
-
             categories = self.get_categories(unit)
 
             unit_root = join(race_root, unit)
@@ -67,17 +57,14 @@ class Command(BaseCommand):
 
             icon_path = self.get_unit_icon_path(unit)
 
-            yield name, unit_root, icon_path, categories
+            yield race, name, unit_root, icon_path, categories
 
     def is_ignored(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('ignore', False)
 
     def get_name(self, unit):
         custom_name = UNITS_MAPPING.get(unit, {}).get('name', None)
-        if custom_name is None:
-            return self.beautiful_name(unit)
-        else:
-            return custom_name
+        return custom_name or self.beautiful_name(unit)
 
     def beautiful_name(self, name):
         beautiful_name = name[0]
@@ -88,6 +75,9 @@ class Command(BaseCommand):
             beautiful_name += letter
 
         return beautiful_name
+
+    def get_race(self, unit):
+        return UNITS_MAPPING.get(unit, {}).get('race', None)
 
     def get_categories(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('categorization', ())
@@ -130,18 +120,35 @@ class Command(BaseCommand):
 
             yield sound, sound_path
 
-    def handle_race(self, race, icon):
-        icon_dir = dirname(icon)
-        cmd('BLPConverter', '--format', 'png', '--dest', icon_dir, icon)
+    def get_race_icon(self, race):
+        icon_file = RACE_ICONS.get(race, None)
+        if icon_file is None:
+            self.stdout.write(
+                "{} race icon not found : using a question mark instead".
+                format(race))
+            icon_path = self.get_question_mark_path()
+        else:
+            icon_path = join(self.root, icon_file)
 
-        png_icon = icon[:-4] + '.png'
+        return icon_path
 
-        with open(png_icon, 'rb') as fh:
-            i = File(fh)
-            Race.objects.get_or_create(
-                name=race,
-                icon=i,
-            )
+    def handle_race(self, race):
+        r, created = Race.objects.get_or_create(name=race)
+
+        if created:
+            icon = self.get_race_icon(race)
+
+            icon_dir = dirname(icon)
+            cmd('BLPConverter', '--format', 'png', '--dest', icon_dir, icon)
+
+            png_icon = icon[:-4] + '.png'
+
+            with open(png_icon, 'rb') as fh:
+                i = File(fh)
+                r.icon = i
+                r.save()
+
+        return r, created
 
     def handle_unit(self, race, unit, icon, categories):
         icon_dir = dirname(icon)
@@ -153,10 +160,12 @@ class Command(BaseCommand):
         special = True if 'special' in categories else False
         campaign = True if 'campaign' in categories else False
 
-        r = Race.objects.get(name=race)
+        r, created = self.handle_race(race)
+        print('unit {} race {} created {}'.format(unit, race, created))
+
         with open(png_icon, 'rb') as fh:
             i = File(fh)
-            Unit.objects.get_or_create(
+            u, created = Unit.objects.get_or_create(
                 name=unit,
                 race=r,
                 icon=i,
@@ -165,16 +174,17 @@ class Command(BaseCommand):
                 campaign=campaign,
             )
 
-    def handle_sound(self, race, unit, sound):
-        r = Race.objects.get(name=race)
-        u = Unit.objects.get(name=unit, race=r)
+        return u
 
+    def handle_sound(self, unit, sound):
         name = basename(sound)[:-4]
 
         with open(sound, 'rb') as fh:
-            s = File(fh)
-            Sound.objects.get_or_create(
+            a = File(fh)
+            s, created = Sound.objects.get_or_create(
                 name=name,
-                unit=u,
-                audio=s,
+                unit=unit,
+                audio=a,
             )
+
+        return s
