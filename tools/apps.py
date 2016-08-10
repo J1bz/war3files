@@ -104,7 +104,6 @@ UNITS_MAPPING = {
     },
     'DoomGuard': {
         'race': 'Creeps',
-        'categorization': ('campaign'),
     },
     'ElfVillagerWoman': {
         'categorization': ('campaign'),
@@ -120,7 +119,6 @@ UNITS_MAPPING = {
     'felhound': {
         'name': 'Felhound',
         'race': 'Creeps',
-        'categorization': ('campaign'),
         'replaceable_icon': 'FelHound',
     },
     'FlyingSheep': {
@@ -268,7 +266,6 @@ UNITS_MAPPING = {
     },
     'Infernal': {
         'race': 'Creeps',
-        'categorization': ('campaign'),
     },
     'Jaina': {
         'categorization': ('campaign', 'heroic'),
@@ -347,7 +344,7 @@ UNITS_MAPPING = {
     },
     'Pitlord': {
         'race': 'Critters',
-        'categorization': ('campaign', 'heroic'),
+        'categorization': ('heroic'),
         'replaceable_icon': 'PitLord',
     },
     'PlagueCloud': {
@@ -461,7 +458,6 @@ UNITS_MAPPING = {
     },
     'Warlock': {
         'race': 'Creeps',
-        'categorization': ('campaign'),
     },
     'WarWagon': {
         'categorization': ('campaign', 'special'),
