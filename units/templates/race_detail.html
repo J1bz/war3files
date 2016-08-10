@@ -21,15 +21,199 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <ul class="list-group">
-          {% for unit in race.unit_set.all|dictsort:"name" %}
-            <a href="/unit/{{ unit.pk }}/">
-              <li class="list-group-item">
-                <img src="/media/{{ unit.icon }}" /> {{ unit }}
-              </li>
-            </a>
-          {% endfor %}
-        </ul>
+
+        <!-- start melee -->
+        <div class="panel-group" id="melee">
+          <div class="panel panel-default">
+
+            <div class="panel-heading">
+              <h2 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#melee" href="#collapse-melee">Melee</a>
+              </h2>
+            </div>
+
+            <div class="panel-collapse collapse in" id="collapse-melee">
+
+              <!-- start melee units -->
+              <div class="panel-group">
+                <div class="panel panel-default panel-shift">
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse-melee-units">Units</a>
+                    </h3>
+                  </div>
+
+                  <div class="panel-collapse collapse in" id="collapse-melee-units">
+                    <ul class="list-group">
+                      {% for unit in melee.units|dictsort:"name" %}
+                        <a href="/unit/{{ unit.pk }}/">
+                          <li class="list-group-item">
+                            <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end melee units -->
+
+              <!-- start melee heroes -->
+              <div class="panel-group">
+                <div class="panel panel-default panel-shift">
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse-melee-heroes">Heroes</a>
+                    </h3>
+                  </div>
+
+                  <div class="panel-collapse collapse out" id="collapse-melee-heroes">
+                    <ul class="list-group">
+                      {% for unit in melee.heroes|dictsort:"name" %}
+                        <a href="/unit/{{ unit.pk }}/">
+                          <li class="list-group-item">
+                            <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end melee heroes -->
+
+              <!-- start melee special -->
+              <div class="panel-group">
+                <div class="panel panel-default panel-shift">
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse-melee-special">Special</a>
+                    </h3>
+                  </div>
+
+                  <div class="panel-collapse collapse out" id="collapse-melee-special">
+                    <ul class="list-group">
+                      {% for unit in melee.special|dictsort:"name" %}
+                        <a href="/unit/{{ unit.pk }}/">
+                          <li class="list-group-item">
+                            <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end melee special -->
+
+            </div>
+
+          </div>
+        </div>
+        <!-- end melee -->
+
+        <!-- start campaign -->
+        <div class="panel-group">
+          <div class="panel panel-default">
+
+            <div class="panel-heading">
+              <h2 class="panel-title">
+                <a data-toggle="collapse" href="#collapse-campaign">Campaign</a>
+              </h2>
+            </div>
+
+            <div class="panel-collapse collapse out" id="collapse-campaign">
+
+              <!-- start campaign units -->
+              <div class="panel-group">
+                <div class="panel panel-default panel-shift">
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse-campaign-units">Units</a>
+                    </h3>
+                  </div>
+
+                  <div class="panel-collapse collapse in" id="collapse-campaign-units">
+                    <ul class="list-group">
+                      {% for unit in campaign.units|dictsort:"name" %}
+                        <a href="/unit/{{ unit.pk }}/">
+                          <li class="list-group-item">
+                            <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end campaign units -->
+
+              <!-- start campaign heroes -->
+              <div class="panel-group">
+                <div class="panel panel-default panel-shift">
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse-campaign-heroes">Heroes</a>
+                    </h3>
+                  </div>
+
+                  <div class="panel-collapse collapse out" id="collapse-campaign-heroes">
+                    <ul class="list-group">
+                      {% for unit in campaign.heroes|dictsort:"name" %}
+                        <a href="/unit/{{ unit.pk }}/">
+                          <li class="list-group-item">
+                            <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end campaign heroes -->
+
+              <!-- start campaign special -->
+              <div class="panel-group">
+                <div class="panel panel-default panel-shift">
+
+                  <div class="panel-heading">
+                    <h3 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse-campaign-special">Special</a>
+                    </h3>
+                  </div>
+
+                  <div class="panel-collapse collapse out" id="collapse-campaign-special">
+                    <ul class="list-group">
+                      {% for unit in campaign.special|dictsort:"name" %}
+                        <a href="/unit/{{ unit.pk }}/">
+                          <li class="list-group-item">
+                            <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
+                          </li>
+                        </a>
+                      {% endfor %}
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end campaign special -->
+
+            </div>
+
+          </div>
+        </div>
+        <!-- end campaign -->
+
       </div>
     </div>
   </div>

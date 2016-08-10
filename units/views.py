@@ -16,26 +16,26 @@ def race_detail_view(request, pk):
     except Race.DoesNotExist:
         raise Http404('Race does not exist')
 
-    melee = Unit.objects.filter(campaign=False)
-    melee_normal = melee.filter(heroic=False, special=False)
-    melee_heroic = melee.filter(heroic=True, special=False)
+    melee = Unit.objects.filter(race=race, campaign=False)
+    melee_units = melee.filter(heroic=False, special=False)
+    melee_heroes = melee.filter(heroic=True, special=False)
     melee_special = melee.filter(special=True)
 
-    campaign = Unit.objects.filter(campaign=True)
-    campaign_normal = campaign.filter(heroic=False, special=False)
-    campaign_heroic = campaign.filter(heroic=True, special=False)
+    campaign = Unit.objects.filter(race=race, campaign=True)
+    campaign_units = campaign.filter(heroic=False, special=False)
+    campaign_heroes = campaign.filter(heroic=True, special=False)
     campaign_special = campaign.filter(special=True)
 
     data = {
         'race': race,
         'melee': {
-            'normal': melee_normal,
-            'heroic': melee_heroic,
+            'units': melee_units,
+            'heroes': melee_heroes,
             'special': melee_special,
         },
         'campaign': {
-            'normal': campaign_normal,
-            'heroic': campaign_heroic,
+            'units': campaign_units,
+            'heroes': campaign_heroes,
             'special': campaign_special,
         }
     }
