@@ -7,8 +7,7 @@ from django.core.files import File
 from tools.apps import (
     RACE_ICONS, REPLACEABLE_ICONS_DIR, UNITS_MAPPING)
 from tools.utils import cmd
-from units.models import Race, Unit
-from sounds.models import Sound
+from units.models import Race, Unit, Sound
 
 
 class Command(BaseCommand):
