@@ -160,7 +160,6 @@ class Command(BaseCommand):
         campaign = True if 'campaign' in categories else False
 
         r, created = self.handle_race(race)
-        print('unit {} race {} created {}'.format(unit, race, created))
 
         with open(png_icon, 'rb') as fh:
             i = File(fh)
