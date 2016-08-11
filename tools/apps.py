@@ -9,6 +9,8 @@ RACE_ICONS = {
     'Orc': 'UI/Glues/Loading/Backgrounds/Campaigns/OrcSymbol.blp',
     'NightElf': 'UI/Glues/Loading/Backgrounds/Campaigns/NightElfSymbol.blp',
     'Undead': 'UI/Glues/Loading/Backgrounds/Campaigns/UndeadSymbol.blp',
+    'Creeps': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',
+    'Critters': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',  # NOQA
 }
 
 REPLACEABLE_ICONS_DIR = 'ReplaceableTextures/CommandButtons'
