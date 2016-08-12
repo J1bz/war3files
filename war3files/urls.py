@@ -21,8 +21,8 @@ from units.views import RaceListView, race_detail_view, UnitDetailView
 
 urlpatterns = [
     url(r'^$', RaceListView.as_view()),
-    url(r'^race/(\d+)/?$', race_detail_view),
-    url(r'^unit/(?P<pk>\d+)/?$', UnitDetailView.as_view()),
+    url(r'^race/(?P<slug>[-\w]+)/?$', race_detail_view),
+    url(r'^unit/(?P<slug>[-\w]+)/?$', UnitDetailView.as_view()),
 
     url(r'^admin/', admin.site.urls),
 ]

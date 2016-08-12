@@ -47,7 +47,7 @@
                   <div class="panel-collapse collapse in" id="collapse-melee-units">
                     <ul class="list-group">
                       {% for unit in melee.units|dictsort:"name" %}
-                        <a href="/unit/{{ unit.pk }}/">
+                        <a href="/unit/{{ unit.slug }}/">
                           <li class="list-group-item">
                             <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
                           </li>
@@ -73,7 +73,7 @@
                   <div class="panel-collapse collapse out" id="collapse-melee-heroes">
                     <ul class="list-group">
                       {% for unit in melee.heroes|dictsort:"name" %}
-                        <a href="/unit/{{ unit.pk }}/">
+                        <a href="/unit/{{ unit.slug }}/">
                           <li class="list-group-item">
                             <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
                           </li>
@@ -99,7 +99,7 @@
                   <div class="panel-collapse collapse out" id="collapse-melee-special">
                     <ul class="list-group">
                       {% for unit in melee.special|dictsort:"name" %}
-                        <a href="/unit/{{ unit.pk }}/">
+                        <a href="/unit/{{ unit.slug }}/">
                           <li class="list-group-item">
                             <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
                           </li>
@@ -143,7 +143,7 @@
                   <div class="panel-collapse collapse in" id="collapse-campaign-units">
                     <ul class="list-group">
                       {% for unit in campaign.units|dictsort:"name" %}
-                        <a href="/unit/{{ unit.pk }}/">
+                        <a href="/unit/{{ unit.slug }}/">
                           <li class="list-group-item">
                             <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
                           </li>
@@ -169,7 +169,7 @@
                   <div class="panel-collapse collapse out" id="collapse-campaign-heroes">
                     <ul class="list-group">
                       {% for unit in campaign.heroes|dictsort:"name" %}
-                        <a href="/unit/{{ unit.pk }}/">
+                        <a href="/unit/{{ unit.slug }}/">
                           <li class="list-group-item">
                             <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
                           </li>
@@ -195,7 +195,7 @@
                   <div class="panel-collapse collapse out" id="collapse-campaign-special">
                     <ul class="list-group">
                       {% for unit in campaign.special|dictsort:"name" %}
-                        <a href="/unit/{{ unit.pk }}/">
+                        <a href="/unit/{{ unit.slug }}/">
                           <li class="list-group-item">
                             <img src="/media/{{ unit.icon }}" width="32px" height="32px" /> {{ unit }}
                           </li>

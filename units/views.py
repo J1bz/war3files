@@ -10,9 +10,9 @@ class RaceListView(ListView):
     template_name = 'race_list.html'
 
 
-def race_detail_view(request, pk):
+def race_detail_view(request, slug):
     try:
-        race = Race.objects.get(pk=pk)
+        race = Race.objects.get(slug=slug)
     except Race.DoesNotExist:
         raise Http404('Race does not exist')
 

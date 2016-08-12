@@ -4,13 +4,31 @@ from django.apps import AppConfig
 class ToolsConfig(AppConfig):
     name = 'tools'
 
-RACE_ICONS = {
-    'Human': 'UI/Glues/Loading/Backgrounds/Campaigns/HumanSymbol.blp',
-    'Orc': 'UI/Glues/Loading/Backgrounds/Campaigns/OrcSymbol.blp',
-    'NightElf': 'UI/Glues/Loading/Backgrounds/Campaigns/NightElfSymbol.blp',
-    'Undead': 'UI/Glues/Loading/Backgrounds/Campaigns/UndeadSymbol.blp',
-    'Creeps': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',
-    'Critters': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',  # NOQA
+RACES_MAPPING = {
+    'Human': {
+        'name': 'Humans',
+        'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/HumanSymbol.blp',
+    },
+    'Orc': {
+        'name': 'Orcs',
+        'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/OrcSymbol.blp',
+    },
+    'NightElf': {
+        'name': 'Night-Elves',
+        'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/NightElfSymbol.blp',
+    },
+    'Undead': {
+        'name': 'Undead',
+        'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/UndeadSymbol.blp',
+    },
+    'Creeps': {
+        'name': 'Neutral (hostile)',
+        'icon': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',  # NOQA
+    },
+    'Critters': {
+        'name': 'Neutral (passive)',
+        'icon': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',  # NOQA
+    },
 }
 
 REPLACEABLE_ICONS_DIR = 'ReplaceableTextures/CommandButtons'
@@ -62,45 +80,45 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroTaurenChieftain',
     },
     'ChaosGrunt': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
     },
     'ChaosHellscream': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'ChaosGrom',
     },
     'ChaosKotoBeast': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
     },
     'ChaosOrcRange': {
         'ignore': True,
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
         'replaceable_icon': 'SelectHeroOn',
     },
     'ChaosPeon': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
     },
     'ChaosSpaceOrc': {
         'categorization': ('campaign'),
     },
     'ChaosWarlock': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
     },
     'ChaosWarlockGreen': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
     },
     'ChaosWarlord': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
     },
     'ChaosWolfrider': {
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign'),
         'replaceable_icon': 'ChaosWolfRider',
     },
@@ -172,7 +190,7 @@ UNITS_MAPPING = {
     },
     'HeroChaosBladeMaster': {
         'name': 'Blade Master of the Blackrock Clan',
-        'race': 'Orc',
+        'race': 'Orcs',
         'categorization': ('campaign', 'heroic'),
         'replaceable_icon': 'ChaosBlademaster',
     },

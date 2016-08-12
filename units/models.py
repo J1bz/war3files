@@ -1,12 +1,14 @@
 from os.path import basename
 
 from django.db.models import (
-    Model, CharField, ForeignKey, BooleanField, ImageField, FileField)
+    Model, CharField, ForeignKey, BooleanField, ImageField, FileField,
+    SlugField)
 from django.forms import ModelForm
 
 
 class Race(Model):
     name = CharField(max_length=32)
+    slug = SlugField(unique=True, max_length=32)
     icon = ImageField(upload_to='race_icons', null=True, blank=True)
 
     def __str__(self):
@@ -16,11 +18,12 @@ class Race(Model):
 class RaceForm(ModelForm):
     class Meta:
         model = Race
-        fields = ('name', 'icon',)
+        fields = ('name', 'slug', 'icon',)
 
 
 class Unit(Model):
     name = CharField(max_length=64)
+    slug = SlugField(unique=True, max_length=64)
     race = ForeignKey(Race)
     icon = ImageField(upload_to='icons', null=True, blank=True)
     building = BooleanField(default=False)
@@ -37,6 +40,7 @@ class UnitForm(ModelForm):
         model = Unit
         fields = (
             'name',
+            'slug',
             'race',
             'icon',
             'building',
@@ -48,6 +52,7 @@ class UnitForm(ModelForm):
 
 class Sound(Model):
     name = CharField(max_length=64)
+    slug = SlugField(unique=True, max_length=64)
     unit = ForeignKey(Unit)
     audio = FileField(upload_to='sounds')
 
@@ -58,4 +63,4 @@ class Sound(Model):
 class SoundForm(ModelForm):
     class Meta:
         model = Sound
-        fields = ('name', 'unit', 'audio',)
+        fields = ('name', 'slug', 'unit', 'audio',)

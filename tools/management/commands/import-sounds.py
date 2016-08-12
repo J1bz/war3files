@@ -3,9 +3,10 @@ from os.path import join, isfile, isdir, basename, dirname
 
 from django.core.management.base import BaseCommand
 from django.core.files import File
+from django.template.defaultfilters import slugify
 
 from tools.apps import (
-    RACE_ICONS, REPLACEABLE_ICONS_DIR, UNITS_MAPPING)
+    RACES_MAPPING, REPLACEABLE_ICONS_DIR, UNITS_MAPPING)
 from tools.utils import cmd
 from units.models import Race, Unit, Sound
 
@@ -20,10 +21,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         self.root = options['root']
 
-        for race, r_root in self.get_races():
+        for race, r_icon, r_root in self.get_races():
             for u_race, unit, u_root, u_icon, cats in self.get_units(r_root):
                 real_race = u_race or race
-                u = self.handle_unit(real_race, unit, u_icon, cats)
+                u = self.handle_unit(real_race, r_icon, unit, u_icon, cats)
 
                 for sound, s_path in self.get_sounds(u_root):
                     self.handle_sound(u, s_path)
@@ -36,19 +37,42 @@ class Command(BaseCommand):
             if not isdir(race_root):
                 continue
 
-            yield race, race_root
+            name = self.get_race_name(race)
+            icon = self.get_race_icon_path(race)
+
+            yield name, icon, race_root
+
+    def get_race_name(self, race):
+        name = RACES_MAPPING.get(race, {}).get('name', None)
+        if name is None:
+            self.stdout.write("{0} name not found : using '{0}' by default".
+                              format(race))
+            return race
+        return name
+
+    def get_race_icon_path(self, race):
+        icon_file = RACES_MAPPING.get(race, {}).get('icon', None)
+        if icon_file is None:
+            self.stdout.write(
+                "{} race icon not found : using a question mark instead".
+                format(race))
+            icon_path = self.get_question_mark_path()
+        else:
+            icon_path = join(self.root, icon_file)
+
+        return icon_path
 
     def get_question_mark_path(self):
         return join(self.root, REPLACEABLE_ICONS_DIR, 'BTNSelectHeroOn.blp')
 
     def get_units(self, race_root):
         for unit in listdir(race_root):
-            if self.is_ignored(unit):
+            if self.is_unit_ignored(unit):
                 continue
 
-            race = self.get_race(unit)
-            name = self.get_name(unit)
-            categories = self.get_categories(unit)
+            race = self.get_unit_race(unit)
+            name = self.get_unit_name(unit)
+            categories = self.get_unit_categories(unit)
 
             unit_root = join(race_root, unit)
             if not isdir(unit_root):
@@ -58,10 +82,13 @@ class Command(BaseCommand):
 
             yield race, name, unit_root, icon_path, categories
 
-    def is_ignored(self, unit):
+    def is_unit_ignored(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('ignore', False)
 
-    def get_name(self, unit):
+    def get_unit_race(self, unit):
+        return UNITS_MAPPING.get(unit, {}).get('race', None)
+
+    def get_unit_name(self, unit):
         custom_name = UNITS_MAPPING.get(unit, {}).get('name', None)
         return custom_name or self.beautiful_name(unit)
 
@@ -75,10 +102,7 @@ class Command(BaseCommand):
 
         return beautiful_name
 
-    def get_race(self, unit):
-        return UNITS_MAPPING.get(unit, {}).get('race', None)
-
-    def get_categories(self, unit):
+    def get_unit_categories(self, unit):
         return UNITS_MAPPING.get(unit, {}).get('categorization', ())
 
     def get_unit_icon_path(self, unit):
@@ -119,23 +143,13 @@ class Command(BaseCommand):
 
             yield sound, sound_path
 
-    def get_race_icon(self, race):
-        icon_file = RACE_ICONS.get(race, None)
-        if icon_file is None:
-            self.stdout.write(
-                "{} race icon not found : using a question mark instead".
-                format(race))
-            icon_path = self.get_question_mark_path()
-        else:
-            icon_path = join(self.root, icon_file)
-
-        return icon_path
-
-    def handle_race(self, race):
+    def handle_race(self, race, icon):
         r, created = Race.objects.get_or_create(name=race)
 
         if created:
-            icon = self.get_race_icon(race)
+            # slugs are supposed to be unique, but a unique name implies a
+            # unique slug in our case
+            r.slug = slugify(race)
 
             icon_dir = dirname(icon)
             cmd('BLPConverter', '--format', 'png', '--dest', icon_dir, icon)
@@ -149,7 +163,7 @@ class Command(BaseCommand):
 
         return r, created
 
-    def handle_unit(self, race, unit, icon, categories):
+    def handle_unit(self, race, race_icon, unit, icon, categories):
         icon_dir = dirname(icon)
         cmd('BLPConverter', '--format', 'png', '--dest', icon_dir, icon)
 
@@ -159,12 +173,13 @@ class Command(BaseCommand):
         special = True if 'special' in categories else False
         campaign = True if 'campaign' in categories else False
 
-        r, created = self.handle_race(race)
+        r, created = self.handle_race(race, race_icon)
 
         with open(png_icon, 'rb') as fh:
             i = File(fh)
             u, created = Unit.objects.get_or_create(
                 name=unit,
+                slug=slugify(unit),
                 race=r,
                 icon=i,
                 heroic=heroic,
@@ -181,6 +196,7 @@ class Command(BaseCommand):
             a = File(fh)
             s, created = Sound.objects.get_or_create(
                 name=name,
+                slug='{}-{}'.format(unit.slug, slugify(name)),
                 unit=unit,
                 audio=a,
             )
