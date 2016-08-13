@@ -4,31 +4,40 @@ from django.apps import AppConfig
 class ToolsConfig(AppConfig):
     name = 'tools'
 
-RACES_MAPPING = {
-    'Human': {
+RACES_LIST = [
+    {
         'name': 'Humans',
         'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/HumanSymbol.blp',
     },
-    'Orc': {
+    {
         'name': 'Orcs',
         'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/OrcSymbol.blp',
     },
-    'NightElf': {
+    {
         'name': 'Night-Elves',
         'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/NightElfSymbol.blp',
     },
-    'Undead': {
+    {
         'name': 'Undead',
         'icon': 'UI/Glues/Loading/Backgrounds/Campaigns/UndeadSymbol.blp',
     },
-    'Creeps': {
+    {
         'name': 'Neutral (hostile)',
         'icon': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',  # NOQA
     },
-    'Critters': {
+    {
         'name': 'Neutral (passive)',
         'icon': 'UI/Glues/ScoreScreen/ScoreScreen-Defeat/scorescreen-defeat.blp',  # NOQA
     },
+]
+
+RACES_DEFAULT_MAPPING = {
+    'Human': 'Humans',
+    'Orc': 'Orcs',
+    'NightElf': 'Night-Elves',
+    'Undead': 'Undead',
+    'Creeps': 'Neutral (hostile)',
+    'Critters': 'Neutral (passive)',
 }
 
 REPLACEABLE_ICONS_DIR = 'ReplaceableTextures/CommandButtons'
@@ -123,7 +132,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'ChaosWolfRider',
     },
     'DoomGuard': {
-        'race': 'Creeps',
+        'race': 'Neutral (hostile)',
     },
     'ElfVillagerWoman': {
         'categorization': ('campaign'),
@@ -138,7 +147,7 @@ UNITS_MAPPING = {
     },
     'felhound': {
         'name': 'Felhound',
-        'race': 'Creeps',
+        'race': 'Neutral (hostile)',
         'replaceable_icon': 'FelHound',
     },
     'FlyingSheep': {
@@ -285,7 +294,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'HeroDemonHunter',
     },
     'Infernal': {
-        'race': 'Creeps',
+        'race': 'Neutral (hostile)',
     },
     'Jaina': {
         'categorization': ('campaign', 'heroic'),
@@ -363,7 +372,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'Scout',
     },
     'Pitlord': {
-        'race': 'Critters',
+        'race': 'Neutral (passive)',
         'categorization': ('heroic'),
         'replaceable_icon': 'PitLord',
     },
@@ -477,11 +486,11 @@ UNITS_MAPPING = {
         'categorization': ('campaign'),
     },
     'Warlock': {
-        'race': 'Creeps',
+        'race': 'Neutral (hostile)',
     },
     'WarWagon': {
         'categorization': ('campaign', 'special'),
-        'replaceable_icon': 'SeigeEngine',
+        'replaceable_icon': 'SiegeEngine',
     },
     'Watcher': {
         'replaceable_icon': 'AvengingWatcher',
