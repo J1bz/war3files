@@ -9,8 +9,9 @@ class RaceAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
     def show_icon(self, obj):
-        return format_html("<img src='{0}' alt='{0}'>".
-                           format(obj.icon.url, obj.icon.name))
+        return format_html("<img src='{}' alt='{}' width='64px'"
+                           "height='64px' />".format(obj.icon.url,
+                                                     obj.icon.name))
 
 
 class UnitAdmin(admin.ModelAdmin):
@@ -27,7 +28,8 @@ class UnitAdmin(admin.ModelAdmin):
     search_fields = ('name', 'race__name',)
 
     def show_icon(self, obj):
-        return format_html("<img src='{0}' alt='{0}'>".
+        return format_html("<img src='{}' alt='{}' width='24px' "
+                           "height='24px' />".
                            format(obj.icon.url, obj.icon.name))
 
 
