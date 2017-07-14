@@ -160,7 +160,7 @@ UNITS_MAPPING = {
         'replaceable_icon': 'Sheep',
     },
     'ForestTrollTrapper': {
-        'replaceable_icon': 'ForestTrollTrapper',
+        'icon': 'ReplaceableTextures/WorldEditUI/Editor-Random-Unit.blp',
     },
     'GnollOverSeer': {
         'replaceable_icon': 'GnollKing',
@@ -487,13 +487,14 @@ UNITS_MAPPING = {
     },
     'Warlock': {
         'race': 'Neutral (hostile)',
+        'icon': 'ReplaceableTextures/WorldEditUI/Editor-Random-Unit.blp',
     },
     'WarWagon': {
         'categorization': ('campaign', 'special'),
-        'replaceable_icon': 'SiegeEngine',
+        'replaceable_icon': 'SteamTank',
     },
     'Watcher': {
-        'replaceable_icon': 'AvengingWatcher',
+        'icon': 'ReplaceableTextures/WorldEditUI/Editor-Random-Unit.blp',
     },
     'WaterElemental': {
         'categorization': ('special'),

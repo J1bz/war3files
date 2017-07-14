@@ -107,34 +107,37 @@ class Command(BaseCommand):
         return UNITS_MAPPING.get(unit, {}).get('categorization', ())
 
     def get_unit_icon_path(self, unit):
+        custom_icon = UNITS_MAPPING.get(unit, {}).get('icon', None)
+        if custom_icon is not None:
+            custom_icon_path = join(self.root, custom_icon)
+            if isfile(custom_icon_path):
+                return custom_icon_path
+            else:
+                self.stdout.write('{} not found'.format(custom_icon_path))
+
+        repl_icon = UNITS_MAPPING.get(unit, {}).get('replaceable_icon', None)
+        if repl_icon is not None:
+            repl_icon_path = join(self.root, REPLACEABLE_ICONS_DIR,
+                                  'BTN{}.blp'.format(repl_icon))
+            if isfile(repl_icon_path):
+                return repl_icon_path
+            else:
+                self.stdout.write('{} not found'.format(repl_icon_path))
+
         if not hasattr(self, 'buttons'):
             self.buttons = join(self.root, REPLACEABLE_ICONS_DIR)
         buttons = self.buttons
+        default_icon_path = join(buttons, 'BTN{}.blp'.format(unit))
+        if isfile(default_icon_path):
+            return default_icon_path
 
-        icon_path = join(buttons, 'BTN{}.blp'.format(unit))
-        if not isfile(icon_path):
-            replace = UNITS_MAPPING.get(unit, {}).get('replaceable_icon', None)
-            if replace is None:
-                self.stdout.write(
-                    "{} not found for unit {} and its replaceable "
-                    "icon is not defined : using a question mark instead".
-                    format(icon_path, unit))
+        self.stdout.write("Neither icon nor replaceable_icon properties for "
+                          "unit {} are definied or are files, and default "
+                          "icon location ({}) is not a file : using a "
+                          "question mark instead".
+                          format(unit, default_icon_path))
 
-                return self.get_question_mark_path()
-
-            replaceable_icon = join(REPLACEABLE_ICONS_DIR,
-                                    'BTN{}.blp'.format(replace))
-
-            icon_path = join(self.root, replaceable_icon)
-            if not isfile(icon_path):
-                self.stdout.write(
-                    "Unit {} has no icon and its replaceable icon {} "
-                    "is not a file : using a question mark instead".
-                    format(unit, icon_path))
-
-                return self.get_question_mark_path()
-
-        return icon_path
+        return self.get_question_mark_path()
 
     def get_sounds(self, unit_root):
         for sound in listdir(unit_root):
