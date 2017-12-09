@@ -1,8 +1,8 @@
-from os import basename
+from os.path import basename
 
 from django.db.models import (
     Model, CharField, ForeignKey, BooleanField, ImageField, FileField,
-    SlugField)
+    SlugField, CASCADE)
 from django.forms import ModelForm
 
 from units.storage import OverwriteStorage
@@ -32,7 +32,7 @@ class RaceForm(ModelForm):
 class Unit(Model):
     name = CharField(max_length=64)
     slug = SlugField(unique=True, max_length=64)
-    race = ForeignKey(Race)
+    race = ForeignKey(Race, on_delete=CASCADE)
     icon = ImageField(
         max_length=128,
         upload_to='icons',
@@ -67,7 +67,7 @@ class UnitForm(ModelForm):
 class Sound(Model):
     name = CharField(max_length=64)
     slug = SlugField(unique=True, max_length=64)
-    unit = ForeignKey(Unit)
+    unit = ForeignKey(Unit, on_delete=CASCADE)
     audio = FileField(
         max_length=128,
         upload_to='sounds',
